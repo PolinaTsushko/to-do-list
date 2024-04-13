@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+    <title>Templates</title>
+</head>
+
+<body>
+    <div class="todo">
+        <h1 class="title">Todo List</h1>
+        <form class="form" name="item-form">
+            <input type="text" class="form__input" placeholder="" />
+            <button class="form__submit" type="submit">Добавить</button>
+        </form>
+        <ul class="list"></ul>
+    </div>
+    <script src="script.js" type="module"></script>
+    <footer class="footer"></footer>
+
+    <template class="card-template">
+        <li class="list__item">
+            <span class="item__text"></span>
+            <img class="edit" src="" alt="Редактировать" />
+            <img class="duplicate" src="" alt="Копировать" />
+            <img class="delete" src="" alt="Удалить" />
+        </li>
+    </template>
+</body>
+
+</html>
