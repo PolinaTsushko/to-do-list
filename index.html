@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./index.css" />
     <title>Templates</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="todo">
         <img class="todo__image" src="./images/image.jpg" alt="Аватар">
-      <h1 class="title">Teenage Mutant Ninja Turtles</h1>
-      <h2 class="subtitle">To-Do List</h2>
-      <form class="form" name="item-form">
-        <input
-          type="text"
-          class="form__input"
-          placeholder="Кавабанга!"
-        />
-        <button class="form__submit" type="submit">Добавить</button>
-      </form>
-      <ul class="list"></ul>
+        <h1 class="title">Teenage Mutant Ninja Turtles</h1>
+        <h2 class="subtitle">To-Do List</h2>
+        <form class="form" name="item-form">
+            <input type="text" class="form__input" placeholder="Кавабанга!" minlength="2" maxlength="20" id="about"
+                required/>
+            <button class="form__submit" type="submit">Добавить</button>
+        </form>
+        <ul class="list"></ul>
     </div>
     <script src="script.js" type="module"></script>
     <footer class="footer">© Master Splinter and Co</footer>
 
     <template class="card-template">
-      <li class="list__item">
-        <span class="item__text">Какой-то текст</span>
-        <img class="edit" src="" alt="Редактировать" />
-        <img class="duplicate" src="" alt="Копировать" />
-        <img class="delete" src="" alt="Удалить" />
-      </li>
+        <li class="list__item">
+            <span class="item__text">Какой-то текст</span>
+            <img class="edit" src="./images/edit.svg" width="30" alt="Редактировать" />
+            <img class="done" data-action="done" src="./images/done.svg" width="30" alt="Зачеркнуть" />
+            <img class="delete" src="./images/delete.svg" width="30" alt="Удалить" />
+        </li>
     </template>
-  </body>
+</body>
+
 </html>
