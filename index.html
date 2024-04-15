@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./index.css" />
+    <script src="script.js" type="module" defer></script>
     <title>Templates</title>
 </head>
 
@@ -15,20 +16,26 @@
         <h2 class="subtitle">To-Do List</h2>
         <form class="form" name="item-form">
             <input type="text" class="form__input" placeholder="Кавабанга!" minlength="2" maxlength="20" id="about"
-                required/>
+                required />
             <button class="form__submit" type="submit">Добавить</button>
         </form>
         <ul class="list"></ul>
     </div>
-    <script src="script.js" type="module"></script>
+
     <footer class="footer">© Master Splinter and Co</footer>
 
     <template class="card-template">
         <li class="list__item">
             <span class="item__text">Какой-то текст</span>
-            <img class="edit" src="./images/edit.svg" width="30" alt="Редактировать" />
-            <img class="done" data-action="done" src="./images/done.svg" width="30" alt="Зачеркнуть" />
-            <img class="delete" src="./images/delete.svg" width="30" alt="Удалить" />
+            <button type="button" data-action="" class="btn-action edit">
+                <img class="edit" src="./images/edit.svg" width="21" alt="Редактировать" />
+            </button>
+            <button type="button" data-action="done" class="btn-action">
+                <img class="done" src="./images/done.svg" width="21" alt="Зачеркнуть" />
+            </button>
+            <button type="button" data-action="delete" class="btn-action delete">
+                <img class="delete" src="./images/delete.svg" width="21" alt="Удалить" />
+            </button>
         </li>
     </template>
 </body>
