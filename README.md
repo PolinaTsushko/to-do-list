@@ -4,12 +4,11 @@
 
 **About** 
 
-View the optimal layout depending on media query
-Add new todos to the list (support localStorage)
-Mark todos as complete (support localStorage)
-Edit todos
-Delete todos from the list
-Drag and drop to reorder items on the list
+* View the optimal layout depending on media query
+* Add new todos to the list (with localStorage)
+* Mark todos as complete (with localStorage)
+* Delete todos from the list
+* Drag and drop to reorder items on the list
 
 ## Installation
 
