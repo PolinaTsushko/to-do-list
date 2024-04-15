@@ -1,0 +1,15 @@
+{
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "To do list",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Polina Tsushko",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^9.0.0"
+  }
+}
