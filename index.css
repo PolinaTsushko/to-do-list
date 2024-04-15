@@ -180,6 +180,7 @@ body {
     font-size: 25px;
     line-height: 30px;
     color: white;
+    cursor: move;
 }
 
 @media screen and (max-width:768px) {
@@ -249,3 +250,7 @@ body {
     margin-left: 10px;
 
 }
+
+.selected {
+    opacity: 0.6;
+  }

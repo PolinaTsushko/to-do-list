@@ -29,6 +29,7 @@ function createItem(itemName) {
     const newItem = cardTemplate.cloneNode(true);
     const itemNameElement = newItem.querySelector('.item__text');
     itemNameElement.textContent = itemName;
+    newItem.setAttribute("draggable", "true");
 
     const deleteButton = newItem.querySelector('.delete');
     deleteButton.addEventListener('click', () => handleDeleteCard(newItem));
@@ -36,15 +37,17 @@ function createItem(itemName) {
     const editButton = newItem.querySelector('.edit');
     editButton.addEventListener('click', () => handleEditItem(itemNameElement));
 
+
     itemNameElement.addEventListener('blur', () => {
         itemNameElement.removeAttribute('contenteditable');
+
     });
 
     return newItem;
 }
 
 function addElement(element) {
-    itemSection.prepend(element);
+    itemSection.append(element);
 }
 
 
@@ -98,3 +101,42 @@ function renderTask(item) {
 
     addElement(taskHTML);
 }
+
+
+const draggables = document.querySelectorAll('.list__item');
+let positionObj = { offset: Number.NEGATIVE_INFINITY }
+
+function distanceBetweenItems(item, droppedPosition) {
+    const rect = item.getBoundingClientRect();
+    return (droppedPosition - (rect.top + rect.height / 2));
+}
+
+draggables.forEach(item => {
+
+    item.addEventListener('dragstart', (event) => {
+
+        event.target.classList.add('selected');
+    })
+    item.addEventListener('dragend', (event) => {
+        event.target.classList.remove('selected');
+    })
+})
+
+itemSection.addEventListener('dragover', (event) => {
+    event.preventDefault()
+})
+itemSection.addEventListener('drop', (event) => {
+    event.preventDefault();
+    const newDraggables = Array.from(document.querySelectorAll('.list__item:not(.selected'));
+    positionObj = { offset: Number.NEGATIVE_INFINITY }
+    newDraggables.forEach(item => {
+        let offset = distanceBetweenItems(item, event.clientY);
+        if (offset < 0 && offset > positionObj.offset) {
+            positionObj.offset = offset;
+            positionObj.element = item;
+        }
+    })
+    const selected = document.querySelector('.selected');
+    itemSection.insertBefore(selected, positionObj.element)
+
+})
