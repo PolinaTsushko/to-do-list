@@ -136,6 +136,6 @@ itemSection.addEventListener('drop', (event) => {
         }
     })
     const selected = document.querySelector('.selected');
-    itemSection.insertBefore(selected, positionObj.element)
+    itemSection.insertBefore(positionObj.element, selected)
 
 })
