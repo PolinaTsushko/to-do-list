@@ -46,7 +46,7 @@ function createItem(itemName) {
 }
 
 function addElement(element) {
-    itemSection.append(element);
+    itemSection.prepend(element);
 }
 
 function handleSubmitForm(evt) {
@@ -136,6 +136,6 @@ itemSection.addEventListener('drop', (event) => {
         }
     })
     const selected = document.querySelector('.selected');
-    itemSection.insertBefore(positionObj.element, selected)
+    itemSection.insertBefore(selected, positionObj.element)
 
 })
