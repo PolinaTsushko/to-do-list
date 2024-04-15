@@ -1,0 +1,12 @@
+.footer {
+    width: 250px;
+    height: 25px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 150%;
+    text-align: center;
+    color: goldenrod;
+    margin: 120px auto 0px;
+}

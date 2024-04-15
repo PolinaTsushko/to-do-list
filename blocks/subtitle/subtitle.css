@@ -1,0 +1,24 @@
+.subtitle {
+    width: 600px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 70px;
+    text-align: center;
+    background: transparent;
+    color: greenyellow;
+    margin: 0;
+}
+
+@media screen and (max-width:768px) {
+    .subtitle {
+        font-size: 35px;
+    }
+}
+
+@media screen and (max-width:420px) {
+    .subtitle {
+        font-size: 30px;
+    }
+}
