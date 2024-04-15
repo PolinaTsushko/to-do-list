@@ -1,16 +1,20 @@
-const items = [
-    'Погулять с Эйприл',
-    'Сходить на занятие к Сплинтеру',
-    'Заказать пиццу',
-];
-
+const itemSection = document.querySelector('.list');
+const itemForm = document.forms['item-form'];
+const itemInputElement = itemForm.querySelector('.form__input');
 const cardTemplate = document
     .querySelector('.card-template')
     .content.querySelector('.list__item');
 
-const itemSection = document.querySelector('.list');
-const itemForm = document.forms['item-form'];
-const itemInputElement = itemForm.querySelector('.form__input');
+let items = [];
+
+if (localStorage.getItem('items')) {
+    items = JSON.parse(localStorage.getItem('items'));
+    items.forEach((item) => renderTask(item));
+}
+
+itemForm.addEventListener('submit', handleSubmitForm);
+itemSection.addEventListener('click', doneTask);
+
 
 function handleDeleteCard(item) {
     item.remove();
@@ -43,26 +47,54 @@ function addElement(element) {
     itemSection.prepend(element);
 }
 
-items.forEach((item) => {
-    addElement(createItem(item));
-});
 
 function handleSubmitForm(evt) {
     evt.preventDefault();
-    addElement(createItem(itemInputElement.value));
+
+    const newTask = {
+        id: Date.now(),
+        text: itemInputElement.value,
+        done: false,
+    };
+
+    items.push(newTask);
+    saveToLocalStorage();
+    renderTask(newTask);
+
     itemInputElement.value = '';
+    itemInputElement.focus();
 }
 
-itemForm.addEventListener('submit', handleSubmitForm);
-
-
-itemSection.addEventListener('click', doneTask);
-
 function doneTask(event) {
-    if (event.target.dataset.action === 'done') {
+    if (event.target.dataset.action !== 'done') return;
 
-        const parentNode = event.target.closest('.list__item');
-        const taskTitle = parentNode.querySelector('.item__text');
-        taskTitle.classList.toggle('item__text_line-through');
-    };
+    const parentNode = event.target.closest('.list__item');
+    const id = Number(parentNode.id);
+    const item = items.find((item) => item.id === id);
+
+    item.done = true;
+    saveToLocalStorage();
+
+    const taskTitle = parentNode.querySelector('.item__text');
+    taskTitle.classList.add('item__text_line-through');
+}
+
+
+function saveToLocalStorage() {
+    localStorage.setItem('items', JSON.stringify(items));
+}
+
+function renderTask(item) {
+    let taskHTML = createItem(itemInputElement.value);
+
+    itemInputElement.value = `${item.text}`;
+    taskHTML = createItem(itemInputElement.value);
+    itemInputElement.value = '';
+    taskHTML.setAttribute('id', `${item.id}`);
+
+    if (item.done === true) {
+        taskHTML.classList.add('item__text_line-through');
+    }
+
+    addElement(taskHTML);
 }
